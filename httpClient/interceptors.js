@@ -1,15 +1,16 @@
 import humps from 'humps';
-import { signOut } from 'next-auth/client';
+// import { signOut } from 'next-auth/client';
 
-import { RUNNING_SERVER_SIDE } from 'constants/index';
+export const RUNNING_SERVER_SIDE = typeof window === 'undefined';
+
 
 const applyInterceptors = (client) => {
   client.interceptors.request.use((config) => {
-    if (config.skipStringify) return config;
+    // if (config.skipStringify) return config;
 
-    config.data = config.data
-      ? JSON.stringify(humps.decamelizeKeys(config.data))
-      : {};
+    // config.data = config.data
+    //   ? JSON.stringify(humps.decamelizeKeys(config.data))
+    //   : {};
     return config;
   });
 
@@ -20,7 +21,7 @@ const applyInterceptors = (client) => {
     },
     (error) => {
       if ((error.response.status === 401) & !RUNNING_SERVER_SIDE) {
-        signOut();
+        // sign out
       }
       return Promise.reject(error);
     }
