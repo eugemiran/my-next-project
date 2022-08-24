@@ -3,6 +3,7 @@
 FROM public.ecr.aws/docker/library/alpine:latest
 WORKDIR /usr/src/app
 COPY . ./
+RUN sudo yum install yarn
 RUN yarn
 RUN yarn build
 EXPOSE 3000
