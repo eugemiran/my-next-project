@@ -1,5 +1,6 @@
 #FROM --platform=linux/amd64 node:16-alpine
-FROM node:16-alpine
+#FROM node:16-alpine
+FROM public.ecr.aws/docker/library/alpine:latest
 WORKDIR /usr/src/app
 COPY . ./
 RUN yarn
