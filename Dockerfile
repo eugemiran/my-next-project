@@ -1,9 +1,8 @@
 #FROM --platform=linux/amd64 node:16-alpine
-FROM docker.io/node:16-alpine
-#FROM public.ecr.aws/docker/library/alpine:latest
+#FROM node:16-alpine
+FROM public.ecr.aws/docker/library/node:18.7.0-alpine3.16
 WORKDIR /usr/src/app
 COPY . ./
-#RUN sudo apk add yarn
 RUN yarn
 RUN yarn build
 EXPOSE 3000
